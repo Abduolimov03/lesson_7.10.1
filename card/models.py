@@ -18,7 +18,7 @@ class Card(models.Model):
 
 
 class CardItem(models.Model):
-    card = models.ForeignKey(on_delete=models.CASCADE)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE)
     flower = models.ForeignKey(Flower, on_delete=models.CASCADE, blank=True, null=True)
     ammount = models.PositiveIntegerField(default=1)
 

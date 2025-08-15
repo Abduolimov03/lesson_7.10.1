@@ -22,10 +22,10 @@ class Order(models.Model):
 
     @property
     def total_price(self):
-        return sum(item.total_price for item in self.items)
+        return sum(item.total_price for item in self.items.all())
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE, blank=True, null=True)
     flower = models.ForeignKey(Flower, on_delete=models.CASCADE)
     ammount = models.PositiveIntegerField(default=1)
 

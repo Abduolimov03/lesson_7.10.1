@@ -14,11 +14,11 @@ class Card(models.Model):
 
     @property
     def total_price(self):
-        return sum(item.total_price for item in self.items)
+        return sum(item.total_price for item in self.items.all())
 
 
 class CardItem(models.Model):
-    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE, related_name='items')
     flower = models.ForeignKey(Flower, on_delete=models.CASCADE, blank=True, null=True)
     ammount = models.PositiveIntegerField(default=1)
 

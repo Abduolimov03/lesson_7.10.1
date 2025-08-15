@@ -17,7 +17,6 @@ from rest_framework.pagination import PageNumberPagination, LimitOffsetPaginatio
 @api_view(['GET', ])
 def flower_list(request):
     flowers = Flower.objects.all()
-    serializer = FlowerSerializer(flowers, many=True)
 
     category = request.GET.get('category')
     if category:
